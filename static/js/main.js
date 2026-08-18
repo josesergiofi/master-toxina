@@ -22,6 +22,18 @@
     window.fbq(method, eventName, metaProduct);
   }
 
+  // Preserva apenas o identificador do clique da Meta no redirecionamento à Kiwify.
+  if (checkoutLink && typeof URL === "function" && typeof URLSearchParams === "function") {
+    var pageParams = new URLSearchParams(window.location.search);
+    var fbclid = pageParams.get("fbclid");
+
+    if (fbclid && fbclid.length <= 500) {
+      var checkoutUrl = new URL(checkoutLink.href);
+      checkoutUrl.searchParams.set("fbclid", fbclid);
+      checkoutLink.href = checkoutUrl.toString();
+    }
+  }
+
   // A página apresenta um único produto; registra a visualização uma vez por carregamento.
   trackMetaEvent("track", "ViewContent");
 
