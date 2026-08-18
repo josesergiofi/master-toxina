@@ -25,7 +25,7 @@
   // A página apresenta um único produto; registra a visualização uma vez por carregamento.
   trackMetaEvent("track", "ViewContent");
 
-  // Registra interesse qualificado quando o valor de R$97 fica visível.
+  // Registra interesse qualificado quando o valor de 97 fica visível.
   if (priceValue) {
     if ("IntersectionObserver" in window) {
       var offerObserver = new IntersectionObserver(function (entries) {
