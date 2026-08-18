@@ -958,10 +958,16 @@ h1, h2, h3, p, li, blockquote, summary {
   flex-direction: column;
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   margin: 0 auto;
   background: #fff;
   box-shadow: 0 16px 48px rgba(14, 43, 40, 0.14);
   overflow: hidden;
+}
+
+.offer-card > .price,
+.offer-card > .stack {
+  min-width: 0;
 }
 
 .price {
@@ -1010,7 +1016,12 @@ h1, h2, h3, p, li, blockquote, summary {
 .price > p {
   margin: 4px 0 20px;
   color: rgba(255, 255, 255, 0.47);
-  font-size: 11px;
+  font-size: 14px;
+}
+
+.price-installment {
+  color: #d7aa82;
+  font-weight: 700;
 }
 
 .offer-cta {
@@ -1048,6 +1059,7 @@ h1, h2, h3, p, li, blockquote, summary {
 .stack > div span {
   min-width: 0;
   flex: 1;
+  overflow-wrap: break-word;
 }
 
 .stack > div b {
@@ -1398,18 +1410,22 @@ footer {
   }
 
   .hero-copy {
+    width: min(100%, 1320px);
     max-width: 1320px;
     margin: 0 auto;
     padding: calc(var(--header-h) + 48px) 32px 48px;
   }
 
+  .hero h1,
+  .hero-copy > p {
+    max-width: 100%;
+  }
+
   .hero h1 {
     font-size: clamp(2.25rem, 4vw, 3.25rem);
-    max-width: 720px;
   }
 
   .hero-copy > p {
-    max-width: 620px;
     font-size: 16px;
   }
 
@@ -1556,34 +1572,6 @@ footer {
     margin-bottom: 40px;
   }
 
-  .offer-card {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    max-width: 960px;
-    flex-direction: unset;
-  }
-
-  .price {
-    order: unset;
-    padding: 36px 32px;
-  }
-
-  .price-value { font-size: 60px; }
-
-  .price-trust {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px 20px;
-  }
-
-  .stack { padding: 32px; }
-
-  .stack .stack-total {
-    margin: 8px -32px -1px;
-    padding: 20px 32px;
-  }
-
   .investment-note {
     max-width: 960px;
     display: grid;
@@ -1652,13 +1640,43 @@ footer {
 
   .hero-copy {
     align-self: center;
+    width: min(100%, 900px);
     max-width: 900px;
     margin: 0 auto;
     padding: calc(var(--header-h) + 48px) 38px 72px;
   }
 
+  .offer-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    width: min(100%, 960px);
+    max-width: 960px;
+    flex-direction: unset;
+  }
+
+  .price {
+    order: unset;
+    padding: 36px 32px;
+  }
+
+  .price-value { font-size: 60px; }
+
+  .price-trust {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
+  }
+
+  .stack { padding: 32px; }
+
+  .stack .stack-total {
+    margin: 8px 0 0;
+    padding: 20px 24px;
+  }
+
   .hero h1 {
-    max-width: 760px;
+    max-width: 100%;
     font-size: clamp(48px, 5vw, 74px);
     font-weight: 520;
     letter-spacing: -0.045em;
@@ -1671,7 +1689,7 @@ footer {
   }
 
   .hero-copy > p {
-    max-width: 650px;
+    max-width: 100%;
   }
 
   .cta--hero {
@@ -1764,7 +1782,10 @@ footer {
 
   .offer-head { max-width: 800px; margin-bottom: 50px; }
 
-  .offer-card { max-width: 1040px; }
+  .offer-card {
+    max-width: min(100%, 1040px);
+    grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr);
+  }
 
   .price { padding: 42px 38px; }
 
@@ -1778,8 +1799,8 @@ footer {
   .stack > div b { font-size: 17px; }
 
   .stack .stack-total {
-    margin: 8px -35px -1px;
-    padding: 22px 35px;
+    margin: 8px 0 0;
+    padding: 22px 24px;
   }
 
   .stack .stack-total b { font-size: 28px; }
@@ -1829,16 +1850,6 @@ footer {
 /* ── Desktop grande (1280px+) ── */
 
 @media (min-width: 1280px) {
-  .site-header__inner,
-  .wrap {
-    padding-left: max(38px, calc((100vw - 1200px) / 2));
-    padding-right: max(38px, calc((100vw - 1200px) / 2));
-  }
-
-  .hero-copy {
-    padding-left: max(7vw, calc((100vw - 1320px) / 2 + 38px));
-  }
-
   .cta-strip {
     max-width: 1200px;
   }
